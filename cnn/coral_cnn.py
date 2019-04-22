@@ -116,7 +116,7 @@ class BookCoverDataset(Dataset):
         self.transform = transform
 
     def __getitem__(self, index):
-        img = Image.open(self.img_paths[index])
+        img = Image.open(self.img_paths[index]).convert('RGB')
 
         if self.transform is not None:
             img = self.transform(img)
