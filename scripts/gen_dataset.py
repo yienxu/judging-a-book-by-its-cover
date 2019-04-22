@@ -42,13 +42,13 @@ def get_list_of_levels(length, levels):
     return ret
 
 
-def split_train_valid_test(df, splits):
-    df = df.sample(frac=1, random_state=RANDOM_STATE)
-    size = df.shape[0]
-    splits = np.cumsum(SPLITS)
-    train = df[:int(size * splits[0])]
-    valid = df[int(size * splits[0]):int(size * splits[1])]
-    test = df[int(size * splits[1]):int(size * splits[2])]
+def split_train_valid_test(df_, splits):
+    df_ = df_.sample(frac=1, random_state=RANDOM_STATE)
+    size = df_.shape[0]
+    splits = np.cumsum(splits)
+    train = df_[:int(size * splits[0])]
+    valid = df_[int(size * splits[0]):int(size * splits[1])]
+    test = df_[int(size * splits[1]):int(size * splits[2])]
     return train, valid, test
 
 
