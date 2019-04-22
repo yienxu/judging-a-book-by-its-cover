@@ -13,7 +13,7 @@ ALL_PATH = os.path.join(DATASET_DIR, 'all.csv')
 TRAIN_PATH = os.path.join(DATASET_DIR, 'train.csv')
 VALID_PATH = os.path.join(DATASET_DIR, 'valid.csv')
 TEST_PATH = os.path.join(DATASET_DIR, 'test.csv')
-LEVELS = 10
+LEVELS = 5
 SPLITS = [0.8, 0.1, 0.1]
 RANDOM_STATE = 123
 
