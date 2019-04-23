@@ -23,7 +23,7 @@ TRAIN_CSV_PATH = 'dataset/train.csv'
 VALID_CSV_PATH = 'dataset/valid.csv'
 TEST_CSV_PATH = 'dataset/test.csv'
 IMAGE_PATH = 'images'
-PATH = 'output'
+PATH = 'output_cnn'
 
 CUDA = 0
 RANDOM_SEED = 123
@@ -329,7 +329,6 @@ for epoch in range(num_epochs):
 
     model.train()
     for batch_idx, (features, targets, levels) in enumerate(train_loader):
-
         features = features.to(DEVICE)
         targets = targets.to(DEVICE)
         levels = levels.to(DEVICE)
@@ -370,7 +369,7 @@ for epoch in range(num_epochs):
         valid_mae, valid_mse, valid_acc = compute_mae_mse_acc(model, valid_loader,
                                                               device=DEVICE)
 
-        s = 'MAE/RMSE/ACC: | Train: %.2f/%.2f/%.2f | Valid: %.2f/%.2f/%.2f' % (
+        s = 'MAE/RMSE/ACC: | Train: %.2f/%.2f/%.2f%% | Valid: %.2f/%.2f/%.2f%%' % (
             train_mae, torch.sqrt(train_mse), train_acc, valid_mae, torch.sqrt(valid_mse), valid_acc)
         print(s)
         with open(LOGFILE, 'a') as f:
@@ -389,7 +388,7 @@ with torch.set_grad_enabled(False):  # save memory during inference
     test_mae, test_mse, test_acc = compute_mae_mse_acc(model, test_loader,
                                                        device=DEVICE)
 
-    s = 'MAE/RMSE/ACC: | Train: %.2f/%.2f/%.2f | Test: %.2f/%.2f/%.2f' % (
+    s = 'MAE/RMSE/ACC: | Train: %.2f/%.2f/%.2f%% | Test: %.2f/%.2f/%.2f%%' % (
         train_mae, torch.sqrt(train_mse), train_acc, test_mae, torch.sqrt(test_mse), test_acc)
     print(s)
     with open(LOGFILE, 'a') as f:
