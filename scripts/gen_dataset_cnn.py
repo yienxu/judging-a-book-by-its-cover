@@ -8,7 +8,7 @@ from PIL import Image
 
 CSV_PATH = 'book_data.csv'
 IMG_PATH = 'images'
-DATASET_DIR = 'dataset'
+DATASET_DIR = 'dataset_cnn'
 ALL_PATH = os.path.join(DATASET_DIR, 'all.csv')
 TRAIN_PATH = os.path.join(DATASET_DIR, 'train.csv')
 VALID_PATH = os.path.join(DATASET_DIR, 'valid.csv')
@@ -36,7 +36,7 @@ def get_list_of_levels(length, levels):
 
     ret = []
     for i in range(levels):
-        lst = [i] * chunk_size
+        lst = [levels - 1 - i] * chunk_size
         ret.extend(lst)
 
     return ret
