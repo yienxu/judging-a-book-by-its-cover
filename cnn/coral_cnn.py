@@ -19,9 +19,9 @@ from torch.utils.data import DataLoader
 from torchvision import transforms
 from PIL import Image
 
-TRAIN_CSV_PATH = 'dataset/train.csv'
-VALID_CSV_PATH = 'dataset/valid.csv'
-TEST_CSV_PATH = 'dataset/test.csv'
+TRAIN_CSV_PATH = 'dataset_cnn/train.csv'
+VALID_CSV_PATH = 'dataset_cnn/valid.csv'
+TEST_CSV_PATH = 'dataset_cnn/test.csv'
 IMAGE_PATH = 'images'
 PATH = 'output_cnn'
 
