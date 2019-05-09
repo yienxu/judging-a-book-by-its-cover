@@ -222,26 +222,6 @@ optimizerD = torch.optim.Adam(netD.parameters(), lr=learning_rate_dsc)
 optimizerG = torch.optim.Adam(netG.parameters(), lr=learning_rate_gen)
 
 
-def compute_mae_mse_acc(model, data_loader, device):
-    mae, mse, correct_pred, num_examples = 0, 0, 0, 0
-    for i, (features, targets, levels) in enumerate(data_loader):
-        features = features.to(device)
-        targets = targets.to(device)
-
-        logits, probas = model(features)
-        predict_levels = probas > 0.5
-        predicted_labels = torch.sum(predict_levels, dim=1)
-        num_examples += targets.size(0)
-        mae += torch.sum(torch.abs(predicted_labels - targets))
-        mse += torch.sum((predicted_labels - targets) ** 2)
-        assert predicted_labels.size() == targets.size()
-        correct_pred += (predicted_labels == targets).sum()
-    mae = mae.float() / num_examples
-    mse = mse.float() / num_examples
-    acc = correct_pred.float() / num_examples * 100
-    return mae, mse, acc
-
-
 start_time = time.time()
 for epoch in range(num_epochs):
     for i, data in enumerate(dataloader):
