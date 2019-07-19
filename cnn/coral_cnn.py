@@ -105,7 +105,6 @@ imp = imp.to(DEVICE)
 
 
 class BookCoverDataset(Dataset):
-    """Custom Dataset for loading AFAD face images"""
 
     def __init__(self, csv_path, img_dir, transform=None):
         df = pd.read_csv(csv_path, index_col=0)
